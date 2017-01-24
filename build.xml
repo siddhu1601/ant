@@ -8,12 +8,12 @@
 
 
 <target name="create">
-<mkdir dir="/home/ec2-user/antscript21/${sid.dir}"/>
+<mkdir dir="${sid.dir}"/>
 
-<mkdir dir="/home/ec2-user/antscript21/${build.dir}"/>
-<mkdir dir="/home/ec2-user/antscript21/${classes.dir}"/>
-<mkdir dir="/home/ec2-user/antscript21/${src.dir}/metafile"/>
-<touch file="/home/ec2-user/antscript21/${src.dir}/metafile/meta-inf"/>
+<mkdir dir="${build.dir}"/>
+<mkdir dir="${classes.dir}"/>
+<mkdir dir="${src.dir}/metafile"/>
+<touch file="${src.dir}/metafile/meta-inf"/>
 </target>
 
 <target name="delete">
