@@ -1,0 +1,43 @@
+<?xml version ="1.0"?>
+<project name="helloworld" default="create">
+<property name="src.dir" value="src"/>
+<property name="build.dir" value="build"/>
+<property name="classes.dir" value="build/classes"/>
+<property name="sid.dir" value="sid"/>
+
+
+
+<target name="create">
+<mkdir dir="/home/ec2-user/antscript21/${sid.dir}"/>
+
+<mkdir dir="/home/ec2-user/antscript21/${build.dir}"/>
+<mkdir dir="/home/ec2-user/antscript21/${classes.dir}"/>
+<mkdir dir="/home/ec2-user/antscript21/${src.dir}/metafile"/>
+<touch file="/home/ec2-user/antscript21/${src.dir}/metafile/meta-inf"/>
+</target>
+
+<target name="delete">
+<delete dir="/home/ec2-user/antscript21"/>
+<delete dir="/home/ec2-user/antscript21/${src.dir}"/>
+<delete dir="/home/ec2-user/antscript21/${build.dir}"/>
+<delete dir="/home/ec2-user/antscript21/${classes.dir}"/>
+</target>
+
+<target name="run" depends="compile">
+<java classname="asd">
+<classpath path="${classes.dir}"/>
+</java>
+</target>
+
+<target name="compile" depends="create">
+<javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}"/>
+</target>
+
+<target name="package" depends="run">
+<jar destfile="${sid.dir}/lib/util.jar"
+basedir="${build.dir}/classes"
+includes="**/*.class,${src.dir}/metafile/meta_inf}">
+</jar>
+</target>
+
+</project>
